@@ -25,6 +25,7 @@ class generico_modelo {
 		$lista 		= $preparo->fetchAll();
 		return $lista;
 
+
 	}
 
 	protected function persistirConsulta($sqlInsert, $arrayInsert){

@@ -13,10 +13,10 @@
 		if($ruta == "productos"){
 			include("vistas/productos.php");
 		}
-		/*if($ruta == "usurios"){
-			include("vistas/usurios.php");
+		if($ruta == "cliente"){
+			include("vistas/cliente.php");
 		}	
-		if($ruta == "cursos"){
+		/*if($ruta == "cursos"){
 			include("vistas/cursos.php");
 		}
 		if($ruta == "tiposCursos"){

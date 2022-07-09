@@ -4,7 +4,7 @@
 		<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons amber-text">menu</i></a>
 			<ul id="nav-mobile" class="hide-on-med-and-down">
 				<li><a class="amber-text" href="index.php?r=productos">Productos</li>
-				<li><a class="amber-text" href="index.php?r=usuarios">Usuarios</a></li>
+				<li><a class="amber-text" href="index.php?r=cliente">Clientes</a></li>
 				<li><a class="amber-text" href="index.php?r=orden">Pedidos</a></li>
 			</ul>
 	</div>
