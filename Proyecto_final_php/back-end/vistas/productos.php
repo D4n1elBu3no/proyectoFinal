@@ -205,20 +205,16 @@ if(isset($_GET['a']) && $_GET['a'] == "borrar"){
 		<h4>Ingresar Producto</h4>
 		<form method="POST" action="index.php?r=productos" class="col s12">
 			<div class="row">
-				<div class="input-field col s6">
+				<div class="input-field col s12">
 					<input id="first_name" type="text" class="validate" name="nombre">
 					<label for="first_name">Nombre</label>
 				</div>
-				<div class="input-field col s6">
+				<div class="input-field col s4">
 					<input id="last_name" type="text" class="validate" name="precio">
 					<label for="last_name">Precio</label>
 				</div>
 			</div>
 			<div class="row">
-				<div class="input-field col s4">
-					<input id="id" type="number" class="validate" name="id">
-				 	<label for="id">Id</label>
-				</div>
 				<div class="input-field col s4">
 					<select id="id_marca" name="id_marca" >
 						<option value="" disabled selected>Seleccione una opcion</option>
@@ -232,8 +228,8 @@ if(isset($_GET['a']) && $_GET['a'] == "borrar"){
 					</select>
 					<label>Marca</label>
 				</div>
-				<div class="input-field col s4">
-					<input id="id_categoria" type="date" class="validate" name="id_categoria">
+				<div class="input-field col s6">
+					<input id="id_categoria" type="text" class="validate" name="id_categoria">
 					<label for="id_categoria">Categoria</label>
 				</div>
 			</div>

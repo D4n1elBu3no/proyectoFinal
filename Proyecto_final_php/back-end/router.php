@@ -16,12 +16,12 @@
 		if($ruta == "cliente"){
 			include("vistas/cliente.php");
 		}	
-		/*if($ruta == "cursos"){
-			include("vistas/cursos.php");
+		if($ruta == "marca"){
+			include("vistas/marca.php");
 		}
-		if($ruta == "tiposCursos"){
-			include("vistas/tiposCursos.php");
-		}*/
+		if($ruta == "categoria"){
+			include("vistas/categoria.php");
+		}
 
 	}else{
 

@@ -141,6 +141,17 @@
 	
 		}
 
+		public function borrar(){
+
+			//$sql = "DELETE FROM alumnos WHERE documento = :documento";
+			$sql = "UPDATE cliente SET estado = 0 WHERE documento = :documento";
+			$arraySQL = array("documento"=>$this->documento);
+			$this->persistirConsulta($sql, $arraySQL);
+			$retorno = array("estado"=>"Ok", "mensaje"=>"Se borro el cliente" );
+			return $retorno;
+	
+		}
+
 		public function listar($filtros = array()){
 
 			$sql = "SELECT * FROM cliente WHERE estado = 1 ";
