@@ -117,6 +117,18 @@
 	
 		}
 
+		
+		public function listarSelect(){
+
+			$sql = "SELECT id_categoria, nombre FROM categoria WHERE estado = 1";
+			$arrayDatos = array();
+			$sql .= " ORDER BY id_categoria";	
+			
+			$lista 	= $this->ejecutarConsulta($sql, $arrayDatos);
+			return $lista;
+	
+		}
+
 		public function totalRegistros(){
 
 			$sql = "SELECT count(*) AS total FROM categoria";

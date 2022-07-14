@@ -1,6 +1,6 @@
 <?php
 
-require_once("generico_modelo.php");
+require_once("modelos/generico_modelo.php");
 
 class productos_modelo extends generico_modelo {
 /*
@@ -98,21 +98,21 @@ class productos_modelo extends generico_modelo {
 			$retorno = array("estado"=>"Error", "mensaje"=>"El precio no puede ser vacio" );
 			return $retorno;
 		}
-		$sqlInsert = "UPDATE productos SET
+		$sqlUpdate = "UPDATE productos SET
 						nombre			= :nombre,
 						precio		= :precio,
 						id_marca 	= :id_marca,
 						id_categoria = :id_categoria 
 						WHERE id = :id;";
 
-		$arrayInsert = array(
+		$arrayUpdate = array(
 				"id" 		=> $this->id,
 				"nombre" 			=> $this->nombre,
 				"precio" 		=> $this->precio,
 				"id_marca" 	=> $this->id_marca,
 				"id_categoria" 	=> $this->id_categoria
 			);
-		$this->persistirConsulta($sqlInsert, $arrayInsert);
+		$this->persistirConsulta($sqlUpdate, $arrayUpdate);
 		$retorno = array("estado"=>"Ok", "mensaje"=>"Se guardo el producto correctamente" );
 		return $retorno;
 
@@ -150,7 +150,18 @@ class productos_modelo extends generico_modelo {
 
 	public function listar($filtros = array()){
 
-		$sql = "SELECT * FROM productos WHERE estado = 1 ";
+		$sql = "SELECT 
+						p.id,
+						p.nombre,
+						p.precio,
+						p.id_marca,
+						m.nombre as nombreMarca,
+						p.id_categoria,
+						c.nombre as nombreCategoria
+					
+					from productos p
+					inner join marca m on m.id_marca = p.id_marca
+					inner join categoria c on c.id_categoria = p.id_categoria";
 		$arrayDatos = array();
 
 		if(isset($filtros['pagina']) && $filtros['pagina'] != ""){

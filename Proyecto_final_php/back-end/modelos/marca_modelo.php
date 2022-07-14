@@ -117,6 +117,17 @@
 	
 		}
 
+		public function listarSelect(){
+
+			$sql = "SELECT id_marca, nombre FROM marca WHERE estado = 1";
+			$arrayDatos = array();
+			$sql .= " ORDER BY id_marca";	
+			
+			$lista 	= $this->ejecutarConsulta($sql, $arrayDatos);
+			return $lista;
+	
+		}
+
 		public function totalRegistros(){
 
 			$sql = "SELECT count(*) AS total FROM marca";

@@ -1,8 +1,16 @@
 <?php
 
 	require_once("modelos/productos_modelo.php");
+	require_once("modelos/marca_modelo.php");
+	require_once("modelos/categoria_modelo.php");
 
 	$objProductos = new productos_modelo();
+
+	$objMarca = new marca_modelo();
+	$selectMarca = $objMarca->listarSelect();
+
+	$objCategoria = new categoria_modelo();
+	$selectCategoria = $objCategoria->listarSelect();
 
 
 	// Evaluar las acciones que mando
@@ -110,9 +118,9 @@ if(isset($_GET['a']) && $_GET['a'] == "borrar"){
 						<select id="id_marca" name="id_marca" >
 							<option value="" disabled selected>Seleccione una opcion</option>
 <?php
-							foreach($listaMarcas as $marca){
+							foreach($selectMarca as $marca){
 ?>
-							<option value="<?=$marca?>" <?php if($marca == $objProductos->obtenerMarca()){ echo("selected"); } ?> ><?=$marca?></option>
+							<option value="<?=$marca['id_marca']?>"><?=$marca['nombre']?></option>
 <?php
 							}
 ?>
@@ -120,8 +128,17 @@ if(isset($_GET['a']) && $_GET['a'] == "borrar"){
 						<label>Marca</label>
 					</div>
 					<div class="input-field col s4">
-						<input id="id_categoria" type="date" class="validate" name="id_categoria" value="<?=$objProductos->obtenerCategoria()?>" >
-						<label for="id_categoria">Categoria</label>
+						<select id="id_categoria" name="id_categoria" >
+							<option value="" disabled selected>Seleccione una opcion</option>
+<?php
+							foreach($selectCategoria as $categoria){
+?>
+							<option value="<?=$categoria['id_categoria']?>"><?=$categoria['nombre']?></option>
+<?php
+							}
+?>
+						</select>
+						<label>Categoria</label>
 					</div>
 				</div>				
 				<button class="btn waves-effect waves-light" type="submit">Guardar
@@ -155,14 +172,14 @@ if(isset($_GET['a']) && $_GET['a'] == "borrar"){
 				<tr>
 					<td><?=$producto['nombre']?></td>
 					<td><?=$producto['precio']?></td>
-					<td><?=$producto['id_marca']?></td>
-					<td><?=$producto['id_categoria']?></td>
+					<td><?=$producto['nombreMarca']?></td>
+					<td><?=$producto['nombreCategoria']?></td>
 					<td>
 						<div class="right">
-							<a class="waves-effect waves-light btn" href="index.php?r=productos&id=<?=$producto['documento']?>&a=editar">
+							<a class="waves-effect waves-light btn" href="index.php?r=productos&id=<?=$producto['id']?>&a=editar">
 								<i class="material-icons">create</i>
 							</a>
-							<a class="waves-effect waves-light btn red" href="index.php?r=productos&id=<?=$producto['documento']?>&a=borrar">
+							<a class="waves-effect waves-light btn red" href="index.php?r=productos&id=<?=$producto['id']?>&a=borrar">
 								<i class="material-icons">delete</i>
 							</a>
 						</div>	
@@ -215,23 +232,32 @@ if(isset($_GET['a']) && $_GET['a'] == "borrar"){
 				</div>
 			</div>
 			<div class="row">
-				<div class="input-field col s4">
-					<select id="id_marca" name="id_marca" >
-						<option value="" disabled selected>Seleccione una opcion</option>
+			<div class="input-field col s4">
+						<select id="id_marca" name="id_marca" >
+							<option value="" disabled selected>Seleccione una opcion</option>
 <?php
-			foreach($listaMarca as $marcas){
+							foreach($selectMarca as $marca){
 ?>
-						<option value="<?=$marcas?>"><?=$marcas?></option>
+							<option value="<?=$marca['id_marca']?>"><?=$marca['nombre']?></option>
 <?php
 							}
 ?>
-					</select>
-					<label>Marca</label>
-				</div>
-				<div class="input-field col s6">
-					<input id="id_categoria" type="text" class="validate" name="id_categoria">
-					<label for="id_categoria">Categoria</label>
-				</div>
+						</select>
+						<label>Marca</label>
+					</div>
+					<div class="input-field col s4">
+						<select id="id_categoria" name="id_categoria" >
+							<option value="" disabled selected>Seleccione una opcion</option>
+<?php
+							foreach($selectCategoria as $categoria){
+?>
+							<option value="<?=$categoria['id_categoria']?>"><?=$categoria['nombre']?></option>
+<?php
+							}
+?>
+						</select>
+						<label>Categoria</label>
+					</div>
 			</div>
 			<input type="hidden" name="accion" value="ingresar">
 			<button class="btn waves-effect waves-light" type="submit">Enviar
