@@ -21,6 +21,8 @@ class productos_modelo extends generico_modelo {
 
 	protected $id_categoria;
 
+	protected $imagen;
+
 	
 	public function constructor(){
 
@@ -46,6 +48,12 @@ class productos_modelo extends generico_modelo {
 	}
 	public function obtenerCategoria(){
 		return $this->id_categoria;
+	}
+	public function obtenerImagen(){
+		return $this->imagen;
+	}
+	public function cargarImagen($ruta){
+		$this->imagen = $ruta;
 	}
 
 	public function cargarProducto($id){
@@ -73,6 +81,7 @@ class productos_modelo extends generico_modelo {
 						precio		= :precio,
 						id_marca 	= :id_marca,
 						id_categoria = :id_categoria,
+						imagen		= :imagen,
 						estado			= 1 ;";
 
 		$arrayInsert = array(
@@ -80,7 +89,8 @@ class productos_modelo extends generico_modelo {
 				"nombre" 			=> $this->nombre,
 				"precio" 		=> $this->precio,
 				"id_marca" 	=> $this->id_marca,
-				"id_categoria" 	=> $this->id_categoria
+				"id_categoria" 	=> $this->id_categoria,
+				"imagen"		=> $this->imagen
 			);
 		$this->persistirConsulta($sqlInsert, $arrayInsert);
 		$retorno = array("estado"=>"Ok", "mensaje"=>"Se ingreso el producto correctamente" );
@@ -157,7 +167,8 @@ class productos_modelo extends generico_modelo {
 						p.id_marca,
 						m.nombre as nombreMarca,
 						p.id_categoria,
-						c.nombre as nombreCategoria
+						c.nombre as nombreCategoria,
+						p.imagen
 					
 					from productos p
 					inner join marca m on m.id_marca = p.id_marca

@@ -16,11 +16,16 @@
 	// Evaluar las acciones que mando
 	$error = array();
 	if(isset($_POST['accion']) && $_POST['accion'] == "ingresar"){
+		
+		$rutaImagen = $objProductos->subirImagen(600,600);
 
-		// En caso que la accion sera ingresar procedemos a ingresar el registro
-		$objProductos->constructor();
-		$error = $objProductos->ingresar();
-
+		if($rutaImagen ){
+			$objProductos->constructor();
+			$objProductos->cargarImagen($rutaImagen);
+			$error = $objProductos->ingresar();
+		}else{
+			$error = array("estado"=>"Error", "mensaje"=>"Error al subir la imagen" );
+		}
 	}
 
 	if(isset($_POST['accion']) && $_POST['accion'] == "borrar"){
@@ -161,6 +166,7 @@ if(isset($_GET['a']) && $_GET['a'] == "borrar"){
 					<th>Precio</th>
 					<th>Marca</th>
 					<th>Categoria</th>
+					<th>Imagen</th>
 					<th class="center-align" style="width: 130px;" >Acciones</th>
 				</tr>
 			</thead>
@@ -174,6 +180,9 @@ if(isset($_GET['a']) && $_GET['a'] == "borrar"){
 					<td><?=$producto['precio']?></td>
 					<td><?=$producto['nombreMarca']?></td>
 					<td><?=$producto['nombreCategoria']?></td>
+					<td>
+						<img src="<?=$producto['imagen']?>" width="100px">
+					</td>
 					<td>
 						<div class="right">
 							<a class="waves-effect waves-light btn" href="index.php?r=productos&id=<?=$producto['id']?>&a=editar">
@@ -259,6 +268,17 @@ if(isset($_GET['a']) && $_GET['a'] == "borrar"){
 						<label>Categoria</label>
 					</div>
 			</div>
+			<div class="row">
+					<div class="file-field input-field">
+						<div class="btn indigo darken-4">
+							<span>Archivo</span>
+							<input type="file" name="archivos" multiple>
+						</div>
+						<div class="file-path-wrapper">
+							<input class="file-path validate" type="text" placeholder="Seleccione un archivo" name="imagen">
+						</div>
+					</div>
+				</div>
 			<input type="hidden" name="accion" value="ingresar">
 			<button class="btn waves-effect waves-light" type="submit">Enviar
 				<i class="material-icons right">send</i>

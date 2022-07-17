@@ -1,3 +1,15 @@
+<?php
+      require_once("php/modelos/cliente_modelo.php");
+      require_once("php/modelos/productos_modelo.php");
+      require_once("php/modelos/marca_modelo.php");
+      require_once("php/modelos/categoria_modelo.php");
+
+      $objCliente = new cliente_modelo();
+      $objProducto = new productos_modelo();
+
+      $listaProductos = $objProducto->listar($filtros = array());
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,190 +36,47 @@
 <?php
     include("barraNav.php");
 ?>         
-            <div class="nav-wrapper">
-              <form>
-                <div class="input-field">
-                  <input id="search" type="search" required>
-                  <label class="label-icon" for="search"><i class="fa-solid fa-magnifying-glass"></i></label>
-                  <i class="material-icons">X</i>
-                </div>
-              </form>
-            </div>
+
     </header>
 
-    <!--Slider-->
-
-    <div class="slider">
-      <ul class="slides">
-        <li>
-          <img src="img/banner.jpeg"> <!-- random image -->
-          <div class="caption left-align">
-            <h3 class="green-text text-darken-1">Nueva línea de brochas!</h3>
-            <h5 class="light grey-text text-darken-1">Hay una esperando por vos.</h5>
-          </div>
-        </li>
-        <li>
-          <img src="img/banner3.jpg"> <!-- random image -->
-          <div class="caption right-align">
-            <h3 class="amber-text text-accent-4">Llegó el verano!</h3>
-            <h5 class="light blue-text text-darken-3">Proteje la piel de tu familia.</h5>
-          </div>
-        </li>
-        <li>
-          <img src="img/banner4.webp"> <!-- random image -->
-          <div class="caption center-align">
-            <h3 class="red-text text-lighten-2">Semana de la Belleza</h3>
-            <h5 class="light red-text text-lighten-2">Todas tus marcas con un 30% OFF.</h5>
-          </div>
-        </li>
-        <li>
-          <img src="img/banner2.jpeg"> <!-- random image -->
-          <div class="caption left-align">
-            <h3>Nuestros recomendados</h3>
-            <h5 class="light grey-text text-lighten-3">Para lograr una piel hidratada.</h5>
-          </div>
-        </li>
-      </ul>
-    </div>
+<?PHP
+      include("slider.php");
+?>
 
     <!--Carrousel-->
+
+<?php 			
+				foreach($listaProductos as $productos){
+?>
 
     <section class="container-products">
       <div class="col s6 m4 l4 product">
         <img src="img/esmalte.jpg" alt="" class="product-img">
         <div class="product-description">
-          <h3 class="product-title">Esmalte Rosa</h3>
-          <span class="product-price">$59</span>
+          <h3 class="product-title"><?=$productos['nombre']?></h3>
+          <span class="product-price"><?=$productos['precio']?></span>
         </div>
-        <i class="product-icon fas fa-cart-plus"></i>
-      </div>
-      <div class="col s6 m4 l4 product">
-        <img src="img/esmalte2.jpg" alt="" class="product-img">
-        <div class="product-description">
-          <h3 class="product-title">Esmalte celeste</h3>
-          <span class="product-price">$55</span>
-        </div>
-        <i class="product-icon fas fa-cart-plus"></i>
-      </div>
-      <div class="col s6 m4 l4 product">
-        <img src="img/esmalte3.jpg" alt="" class="product-img">
-        <div class="product-description">
-          <h3 class="product-title">Esmalte Violeta</h3>
-          <span class="product-price">$59</span>
-        </div>
-        <i class="product-icon fas fa-cart-plus"></i>
-      </div>
-      <div class="col s6 m4 l4 product">
-        <img src="img/esmalte4.jpg" alt="" class="product-img">
-        <div class="product-description">
-          <h3 class="product-title">Esmalte Chocolate</h3>
-          <span class="product-price">$55</span>
-        </div>
-        <i class="product-icon fas fa-cart-plus"></i>
+        <form method="POST" action="index.php" class="col s12">
+
+							<input type="hidden" name="codigo" value="<?=$productos['id']?>" >
+							<input type="hidden" name="accion" value="agregarProducto">
+										
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="name_<?=$productos['id']?>" type="text" class="validate" name="cantidad" value="">
+							<label for="name_<?=$productos['id']?>">Cantidad</label>
+						</div>
+					</div>				
+					<button class="btn waves-effect waves-light" type="submit">
+            <i class="product-icon fas fa-cart-plus"></i>
+					</button>
+				</form>
       </div>
     </section>
-    <section class="container-products">
-      <div class="col s6 m4 l4 product">
-        <img src="img/piel.png" alt="" class="product-img">
-        <div class="product-description">
-          <h3 class="product-title">Crema Hidratante</h3>
-          <span class="product-price">$259</span>
-        </div>
-        <i class="product-icon fas fa-cart-plus"></i>
-      </div>
-      <div class="col s6 m4 l4 product">
-        <img src="img/piel2.webp" alt="" class="product-img">
-        <div class="product-description">
-          <h3 class="product-title">Crema para manos</h3>
-          <span class="product-price">$115</span>
-        </div>
-        <i class="product-icon fas fa-cart-plus"></i>
-      </div>
-      <div class="col s6 m4 l4 product">
-        <img src="img/piel3.jpg" alt="" class="product-img">
-        <div class="product-description">
-          <h3 class="product-title">Pantalla solar</h3>
-          <span class="product-price">$850</span>
-        </div>
-        <i class="product-icon fas fa-cart-plus"></i>
-      </div>
-      <div class="col s6 m4 l4 product">
-        <img src="img/piel4.jpg" alt="" class="product-img">
-        <div class="product-description">
-          <h3 class="product-title">Crema para piernas</h3>
-          <span class="product-price">$299</span>
-        </div>
-        <i class="product-icon fas fa-cart-plus"></i>
-      </div>
-    </section>
-    <section class="container-products">
-      <div class="col s6 m4 l4 product">
-        <img src="img/maquillaje.jpg" alt="" class="product-img">
-        <div class="product-description">
-          <h3 class="product-title">Base Fit Me</h3>
-          <span class="product-price">$499</span>
-        </div>
-        <i class="product-icon fas fa-cart-plus"></i>
-      </div>
-      <div class="col s6 m4 l4 product">
-        <img src="img/maquillaje2.png" alt="" class="product-img">
-        <div class="product-description">
-          <h3 class="product-title">Mascara</h3>
-          <span class="product-price">$329</span>
-        </div>
-        <i class="product-icon fas fa-cart-plus"></i>
-      </div>
-      <div class="col s6 m4 l4 product">
-        <img src="img/maquillaje3.jpg" alt="" class="product-img">
-        <div class="product-description">
-          <h3 class="product-title">Labial</h3>
-          <span class="product-price">$299</span>
-        </div>
-        <i class="product-icon fas fa-cart-plus"></i>
-      </div>
-      <div class="col s6 m4 l4 product">
-        <img src="img/maquillaje4.jpg" alt="" class="product-img">
-        <div class="product-description">
-          <h3 class="product-title">Paleta de sombras</h3>
-          <span class="product-price">$550</span>
-        </div>
-        <i class="product-icon fas fa-cart-plus"></i>
-      </div>
-    </section>
-    <section class="container-products">
-      <div class="col s6 m4 l4 product">
-        <img src="img/perfume.jpg" alt="" class="product-img">
-        <div class="product-description">
-          <h3 class="product-title">Perfume Lively</h3>
-          <span class="product-price">$799</span>
-        </div>
-        <i class="product-icon fas fa-cart-plus"></i>
-      </div>
-      <div class="col s6 m4 l4 product">
-        <img src="img/perfume2.jpg" alt="" class="product-img">
-        <div class="product-description">
-          <h3 class="product-title">Perfume Vivir</h3>
-          <span class="product-price">$849</span>
-        </div>
-        <i class="product-icon fas fa-cart-plus"></i>
-      </div>
-      <div class="col s6 m4 l4 product">
-        <img src="img/perfume3.jpg" alt="" class="product-img">
-        <div class="product-description">
-          <h3 class="product-title">Perfume Ultra</h3>
-          <span class="product-price">$999</span>
-        </div>
-        <i class="product-icon fas fa-cart-plus"></i>
-      </div>
-      <div class="col s6 m4 l4 product">
-        <img src="img/perfume4.jpg" alt="" class="product-img">
-        <div class="product-description">
-          <h3 class="product-title">Peerfume Chanel N5</h3>
-          <span class="product-price">$1550</span>
-        </div>
-        <i class="product-icon fas fa-cart-plus"></i>
-      </div>
-    </section>
+
+<?PHP
+				}
+?>
     
 
       <footer class="page-footer indigo darken-4">
@@ -253,9 +122,10 @@
         var elems = document.querySelectorAll('.sidenav');
         var instances = M.Sidenav.init(elems);
         });
-      </script>
-
-      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.dropdown-trigger');
+            var instances = M.Dropdown.init(elems);
+        });
         document.addEventListener('DOMContentLoaded', function() {
         M.AutoInit();
         var elems = document.querySelectorAll('.slider');
