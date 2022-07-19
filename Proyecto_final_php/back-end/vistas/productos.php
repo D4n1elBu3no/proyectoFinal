@@ -166,7 +166,7 @@ if(isset($_GET['a']) && $_GET['a'] == "borrar"){
 					<th>Precio</th>
 					<th>Marca</th>
 					<th>Categoria</th>
-					<th>Imagen</th>
+					<!-- <th>Imagen</th> -->
 					<th class="center-align" style="width: 130px;" >Acciones</th>
 				</tr>
 			</thead>
@@ -180,9 +180,9 @@ if(isset($_GET['a']) && $_GET['a'] == "borrar"){
 					<td><?=$producto['precio']?></td>
 					<td><?=$producto['nombreMarca']?></td>
 					<td><?=$producto['nombreCategoria']?></td>
-					<td>
+					<!-- <td>
 						<img src="<?=$producto['imagen']?>" width="100px">
-					</td>
+					</td> -->
 					<td>
 						<div class="right">
 							<a class="waves-effect waves-light btn" href="index.php?r=productos&id=<?=$producto['id']?>&a=editar">
@@ -268,7 +268,7 @@ if(isset($_GET['a']) && $_GET['a'] == "borrar"){
 						<label>Categoria</label>
 					</div>
 			</div>
-			<div class="row">
+			<!-- <div class="row">
 					<div class="file-field input-field">
 						<div class="btn indigo darken-4">
 							<span>Archivo</span>
@@ -278,7 +278,7 @@ if(isset($_GET['a']) && $_GET['a'] == "borrar"){
 							<input class="file-path validate" type="text" placeholder="Seleccione un archivo" name="imagen">
 						</div>
 					</div>
-				</div>
+				</div> -->
 			<input type="hidden" name="accion" value="ingresar">
 			<button class="btn waves-effect waves-light" type="submit">Enviar
 				<i class="material-icons right">send</i>

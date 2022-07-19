@@ -4,7 +4,7 @@
     <title>Contactenos</title>
     <!-- <link rel="stylesheet" href="style.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="../../css/materialize.css"  media="screen,projection"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!--Favicon-->
@@ -19,11 +19,6 @@
 
 
 </head>
-<header>
-  <?php
-      include("barraNav.php");
-  ?>         
-</header>
 
 <body>
 
@@ -67,22 +62,6 @@
         </form>
       </div>   
       <br>
-      <br>
-      
-      <footer class="page-footer indigo darken-4">
-        <div class="footer-copyright amber-text center">
-          <div class="container">
-            <ul>
-              <li>Av Central 1520, Montevideo, Uruguay.</li>
-              <li>Tel: 29008888</li>
-              <li>Email: info@lively.uy</li>
-              <li>© 2022 Copyright Lively</li>
-            </ul>
-          </div>
-        </div>
-      </footer>
-
-
-      
+      <br>      
     </body>
  </html>

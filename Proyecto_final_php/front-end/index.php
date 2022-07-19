@@ -1,4 +1,14 @@
 <?php
+
+	@session_start();
+	
+	if(isset($_SESSION['nombre'])){
+
+	}else{
+		header('Location: login.php');
+	}
+
+
       require_once("php/modelos/cliente_modelo.php");
       require_once("php/modelos/productos_modelo.php");
       require_once("php/modelos/marca_modelo.php");
@@ -32,6 +42,7 @@
 
 </head>
 <body>
+
     <header>
 <?php
     include("barraNav.php");
@@ -40,43 +51,14 @@
     </header>
 
 <?PHP
-      include("slider.php");
+      include("php/vistas/slider.php");
 ?>
 
-    <!--Carrousel-->
+<div class="container">
+				<?PHP include ("router.php"); ?>
+</div>
 
-<?php 			
-				foreach($listaProductos as $productos){
-?>
 
-    <section class="container-products">
-      <div class="col s6 m4 l4 product">
-        <img src="img/esmalte.jpg" alt="" class="product-img">
-        <div class="product-description">
-          <h3 class="product-title"><?=$productos['nombre']?></h3>
-          <span class="product-price"><?=$productos['precio']?></span>
-        </div>
-        <form method="POST" action="index.php" class="col s12">
-
-							<input type="hidden" name="codigo" value="<?=$productos['id']?>" >
-							<input type="hidden" name="accion" value="agregarProducto">
-										
-					<div class="row">
-						<div class="input-field col s12">
-							<input id="name_<?=$productos['id']?>" type="text" class="validate" name="cantidad" value="">
-							<label for="name_<?=$productos['id']?>">Cantidad</label>
-						</div>
-					</div>				
-					<button class="btn waves-effect waves-light" type="submit">
-            <i class="product-icon fas fa-cart-plus"></i>
-					</button>
-				</form>
-      </div>
-    </section>
-
-<?PHP
-				}
-?>
     
 
       <footer class="page-footer indigo darken-4">
@@ -90,11 +72,11 @@
             <div class="col s12 m6 l6 right">
               <h5 class="amber-text">Links</h5>
               <ul>
-                <li><a class="amber-text" href="cuidados-piel.html">Cuidados de la Piel</a></li>
-                <li><a class="amber-text" href="unias.html">Uñas</a></li>
-                <li><a class="amber-text" href="maquillaje.html">Maquillaje</a></li>
-                <li><a class="amber-text" href="perfumeria.html">Perfumeria</a></li>
-                <li><a class="amber-text" href="contactenos.html">Contáctenos</a></li>
+                <li><a class="amber-text" href="index.php?r=cuidados-piel">Cuidados de la Piel</a></li>
+                <li><a class="amber-text" href="index.php?r=unias">Uñas</a></li>
+                <li><a class="amber-text" href="index.php?r=maquillaje">Maquillaje</a></li>
+                <li><a class="amber-text" href="index.php?r=perfumeria">Perfumeria</a></li>
+                <li><a class="amber-text" href="index.php?r=contactenos">Contáctenos</a></li>
               </ul>
             </div>
         </div>
@@ -123,6 +105,7 @@
         var instances = M.Sidenav.init(elems);
         });
         document.addEventListener('DOMContentLoaded', function() {
+          M.AutoInit(); 
             var elems = document.querySelectorAll('.dropdown-trigger');
             var instances = M.Dropdown.init(elems);
         });

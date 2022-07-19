@@ -57,6 +57,15 @@
 	
 		}
 
+		public function validarLogin($nombre, $clave){
+    
+            $sql = "SELECT * FROM cliente WHERE nombre = :nombre AND clave = :clave; ";
+            $arrayDatos = array("nombre"=>$nombre, "clave"=>md5($clave));
+            $lista 		= $this->ejecutarConsulta($sql, $arrayDatos);
+            return $lista;
+    
+        }
+
 		public function ingresar(){
 
 			if($this->nombre == ""){
