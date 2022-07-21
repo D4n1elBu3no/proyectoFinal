@@ -57,6 +57,8 @@
 	
 		}
 
+		
+
 		public function validarLogin($nombre, $clave){
     
             $sql = "SELECT * FROM cliente WHERE nombre = :nombre AND clave = :clave; ";

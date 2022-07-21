@@ -18,6 +18,7 @@
       $objProducto = new productos_modelo();
 
       $listaProductos = $objProducto->listar($filtros = array());
+      $listaClientes = $objCliente->listar($filtros = array());
 ?>
 
 <!DOCTYPE html>
