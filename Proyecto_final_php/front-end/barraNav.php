@@ -9,7 +9,7 @@
 ?>
 <nav>
     <div class="nav-wrapper indigo darken-4">
-        <a href="index.php?r=productos" class="brand-logo amber-text">Lively</a>
+        <a href="index.php" class="brand-logo amber-text">Lively</a>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger amber-text"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a class="amber-text" href="index.php?r=cuidados-piel">Cuidados de la Piel</a></li>

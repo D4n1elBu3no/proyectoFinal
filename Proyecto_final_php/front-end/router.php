@@ -25,13 +25,10 @@
 		if($ruta == "unias"){
 			include("php/vistas/unias.php");
 		}
-		if($ruta == "productos"){
-			include("php/vistas/productos.php");
-		}
 
 	}else{
 
-		// echo("NO HAY PARAMETROS");
+		include("php/vistas/productos.php");
 	}
 
 
