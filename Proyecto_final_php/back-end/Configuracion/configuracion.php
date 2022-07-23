@@ -3,7 +3,7 @@
 	$DATABASE = array(
 		"host" => "localhost",
 		"port" => "3306",
-		"database" => "tienda",
+		"database" => "prueba",
 		"user" => "root",
 		"password" => ""
 	);
