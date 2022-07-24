@@ -76,7 +76,6 @@ class productos_modelo extends generico_modelo {
 			return $retorno;
 		}
 		$sqlInsert = "INSERT productos SET
-						id 		= :id,
 						nombre			= :nombre,
 						precio		= :precio,
 						id_marca 	= :id_marca,
@@ -85,7 +84,6 @@ class productos_modelo extends generico_modelo {
 						estado			= 1 ;";
 
 		$arrayInsert = array(
-				"id" 		=> $this->id,
 				"nombre" 			=> $this->nombre,
 				"precio" 		=> $this->precio,
 				"id_marca" 	=> $this->id_marca,

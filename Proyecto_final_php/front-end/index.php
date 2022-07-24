@@ -13,12 +13,32 @@
       require_once("php/modelos/productos_modelo.php");
       require_once("php/modelos/marca_modelo.php");
       require_once("php/modelos/categoria_modelo.php");
+      require_once("php/modelos/detalle_modelo.php");
 
       $objCliente = new cliente_modelo();
       $objProducto = new productos_modelo();
 
       $listaProductos = $objProducto->listar($filtros = array());
       $listaClientes = $objCliente->listar($filtros = array());
+
+      if(isset($_POST['accion']) && $_POST['accion'] == "agregarProducto"){
+		
+        $documento = isset($_SESSION['documento'])?$_SESSION['documento']:1;
+    
+        $objDetalle = new detalle_modelo();
+        // Traer El ultimo carro abierto del usuario
+        $idDetalle = $objDetalle->obtenerDetalle($documento);
+
+    
+        $idProducto = isset($_POST['id'])?$_POST['id']:"";	
+        $cantidad 	= isset($_POST['cantidad'])?$_POST['cantidad']:"";	
+    
+        $respuesta = $objDetalle->cargarLineas($idDetalle,$idProducto,$cantidad);
+    
+        // Ingresar en la tabla producto el articulo + idArticulo (lo paso por hidden)
+        // Procedo a guardar la idLinea	idTicket idArticulo	Cantidad
+        
+      }
 ?>
 
 <!DOCTYPE html>

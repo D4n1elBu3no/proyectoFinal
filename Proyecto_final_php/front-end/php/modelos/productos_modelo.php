@@ -3,14 +3,7 @@
 require_once("generico_modelo.php");
 
 class productos_modelo extends generico_modelo {
-/*
-  'id' int(5),
-	'nombre' varchar(200),
-	'precio' float(10,2),
-	'id_marca' int(5),
-	'id_categoria' int(5),
-	'estado' tinyint(1) DEFAULT NULL,
-*/
+
 	protected $id;
 
 	protected $nombre;
@@ -157,11 +150,13 @@ class productos_modelo extends generico_modelo {
 						p.id_marca,
 						m.nombre as nombreMarca,
 						p.id_categoria,
+						p.imagen,
 						c.nombre as nombreCategoria
 					
 					from productos p
 					inner join marca m on m.id_marca = p.id_marca
-					inner join categoria c on c.id_categoria = p.id_categoria";
+					inner join categoria c on c.id_categoria = p.id_categoria
+						WHERE p.estado != 0 ";
 		$arrayDatos = array();
 
 		if(isset($filtros['pagina']) && $filtros['pagina'] != ""){
