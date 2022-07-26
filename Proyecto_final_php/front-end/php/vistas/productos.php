@@ -46,7 +46,7 @@
           <span class="card-title"><?=$productos['nombre']?></span>
           <span class="product-price"><?=$productos['precio']?></span>
         </div>
-        <form action="index.php" method="POST">
+        <form action="carrito.php?id=<?=$producto['id'] ?>" method="POST">
 
           <input type="hidden" name="codigo" value="<?=$productos['id']?>" >
           <input type="hidden" name="accion" value="agregarProducto">

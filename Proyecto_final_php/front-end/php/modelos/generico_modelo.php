@@ -6,7 +6,7 @@ class generico_modelo {
 
     protected function ejecutarConsulta($sql, $arraySQL){
 
-		include("php/configuracion/configuracion.php");
+		include("php/Configuracion/configuracion.php");
 
 		$srtConexion 	= "mysql:".$DATABASE['host']."=localhost;dbname=".$DATABASE['database'];
 		// Credenciales
