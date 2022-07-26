@@ -156,7 +156,7 @@ class productos_modelo extends generico_modelo {
 					from productos p
 					inner join marca m on m.id_marca = p.id_marca
 					inner join categoria c on c.id_categoria = p.id_categoria
-						WHERE p.estado != 0 ";
+						WHERE p.estado = 1 ";
 		$arrayDatos = array();
 
 		if(isset($filtros['pagina']) && $filtros['pagina'] != ""){

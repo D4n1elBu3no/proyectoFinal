@@ -7,6 +7,17 @@ Tienda de cosmeticos
 Para lograr una copia de la base de datos ejecutar el archivo cron.php.
 Adjunto un dump de la base de datos por cualquier falla del iniciador.
 
+Usuarios de prueba: 
+
+Backend 
+usuario: admin
+clave: admin
+
+Frontend:
+
+usuario: usuario
+clave: clave
+
 3)Tecnologias utilizadas: 
 
 Database: DBeaver

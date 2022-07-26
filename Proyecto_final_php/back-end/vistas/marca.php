@@ -97,7 +97,7 @@ if(isset($_GET['a']) && $_GET['a'] == "borrar"){
 						<input id="first_name" type="text" class="validate" name="nombre" value="<?=$objMarca->obtenerNombre()?>">
 						<label for="first_name">Nombre</label>
 					</div>				
-				<button class="btn waves-effect waves-light" type="submit">Guardar
+				<button class="btn waves-effect waves-light indigo darken-4" type="submit">Guardar
 					<i class="material-icons right">send</i>
 				</button>
 			</form>
@@ -105,11 +105,11 @@ if(isset($_GET['a']) && $_GET['a'] == "borrar"){
 			<div class="divider"></div>
 <?PHP } ?>
 
-<a class="waves-effect waves-light btn modal-trigger right" href="#modal1">Ingresar</a>
+<a class="waves-effect waves-light btn modal-trigger right indigo darken-4" href="#modal1">Ingresar</a>
 	<br><br>
 	<table class="striped">
 		<thead>
-			<tr class="light-blue lighten-3">
+			<tr class="indigo darken-4 amber-text">
 				<th>Id</th>
 				<th>Nombre</th>
 				<th class="center-align" style="width: 130px;" >Acciones</th>

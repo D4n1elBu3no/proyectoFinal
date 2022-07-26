@@ -32,7 +32,8 @@
       
     </section> -->
 
-<main>
+    <?=print_r($productos)?>
+
   <div class="row">
     <div class="col s6 m4 l4">
       <div class="card">
@@ -61,7 +62,6 @@
       </div>
     </div>
   </div>
-</main>
 
 
 

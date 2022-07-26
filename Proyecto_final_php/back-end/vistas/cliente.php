@@ -126,11 +126,11 @@ if(isset($_GET['a']) && $_GET['a'] == "borrar"){
 			<div class="divider"></div>
 <?PHP } ?>
 
-<a class="waves-effect waves-light btn modal-trigger right" href="#modal1">Ingresar</a>
+<a class="waves-effect waves-light btn modal-trigger right indigo darken-4" href="#modal1">Ingresar</a>
 	<br><br>
 	<table class="striped">
 		<thead>
-			<tr class="light-blue lighten-3">
+			<tr class="indigo darken-4 amber-text">
 				<th>Documento</th>
 				<th>Nombre</th>
 				<th>Apellido</th>
